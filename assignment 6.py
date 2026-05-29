@@ -1,6 +1,8 @@
 import pandas as pd
+from sklearn import tree
 from sklearn.preprocessing import LabelEncoder
 from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
 
 data=pd.read_csv("Downloads/Decision_Tree.csv")
 print("Original Dataset:")
@@ -40,3 +42,6 @@ if prediction==1:
 elif prediction==0:
     print("The mechine will not fail")
 
+plt.figure(figsize=(8,6))
+tree.plot_tree(model, filled=True, feature_names=["Temperature", "Vibration"], class_names=["No Failure", "Failure"])
+plt.show()
